@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["deno", "dockerignore", "importmap"],
+  "cSpell.words": [
+    "deno",
+    "denoland",
+    "dockerignore",
+    "importmap",
+    "olegtarasov"
+  ],
   "deno.enable": true,
   "deno.importMap": "./import_map.json",
   "deno.lint": true,

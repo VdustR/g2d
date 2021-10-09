@@ -1,4 +1,4 @@
-# g2d
+# g2d [![Test](https://github.com/VdustR/g2d/actions/workflows/test.yml/badge.svg)](https://github.com/VdustR/g2d/actions/workflows/test.yml)
 
 Transform `.gitignore` into `.dockerignore`.
 

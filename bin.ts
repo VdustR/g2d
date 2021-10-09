@@ -6,6 +6,7 @@ import cwd from "/cwd.ts";
 import inspect from "/inspect.ts";
 import g2d from "/g2d.ts";
 import getTargetPath from "./get_target_path.ts";
+import version from "/version.ts";
 
 const cli = cac("g2d");
 
@@ -38,6 +39,6 @@ cli
   });
 
 cli.help();
-cli.version("0.0.1");
+cli.version(version);
 
 cli.parse();
