@@ -7,6 +7,7 @@ import inspect from "/inspect.ts";
 import g2d from "/g2d.ts";
 import getTargetPath from "./get_target_path.ts";
 import version from "/version.ts";
+import { getStdin } from "get_stdin/mod.ts";
 
 const cli = cac("g2d");
 
@@ -25,9 +26,15 @@ cli
 
     const gitignore = file
       ? await readGitignore(resolve(cwd, file))
+      : !Deno.isatty(Deno.stdin.rid)
+      ? { content: await getStdin({ exitOnEnter: false }), path: undefined }
       : await findGitIgnore();
     if (!gitignore) throw new Error(".gitignore not found");
-    info(`.gitignore ${inspect(gitignore.path)} loaded!`);
+    info(
+      `.gitignore ${
+        gitignore.path ? inspect(gitignore.path) : "from stdin"
+      } loaded!`
+    );
     const dockerignore = g2d(gitignore.content);
     if (!output) {
       console.log(dockerignore);

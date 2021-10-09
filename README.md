@@ -22,10 +22,13 @@ Check [releases](https://github.com/VdustR/g2d/releases).
 `g2d` will detect the nearest `.gitignore` by default.
 
 ```sh
-# std output
+# stdout
 g2d
 
-# export to .dockerignore
+# specific file
+g2d foo/.gitignore
+
+# export to ./.dockerignore
 g2d -o .
 
 # if foo is a directory
@@ -37,6 +40,9 @@ cat foo/.gitignore
 # .dockerignore would be exported to foo
 g2d -o foo
 cat foo
+
+# from stdin to stdout
+cat .gitignore | g2d > .dockerignore
 
 # more
 g2d -h

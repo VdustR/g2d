@@ -3,6 +3,7 @@
     "./": "./",
     "/": "./",
     "cac/": "https://unpkg.com/cac@6.7.8/",
-    "std/": "https://deno.land/x/std@0.110.0/"
+    "std/": "https://deno.land/x/std@0.110.0/",
+    "get_stdin/": "https://deno.land/x/get_stdin@v1.1.0/"
   }
 }
