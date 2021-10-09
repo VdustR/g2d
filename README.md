@@ -1,4 +1,8 @@
-# g2d [![Test](https://github.com/VdustR/g2d/actions/workflows/test.yml/badge.svg)](https://github.com/VdustR/g2d/actions/workflows/test.yml)
+# g2d
+
+[![Test](https://github.com/VdustR/g2d/actions/workflows/test.yml/badge.svg)](https://github.com/VdustR/g2d/actions/workflows/test.yml)
+[![Release](https://github.com/VdustR/g2d/actions/workflows/build.yml/badge.svg)](https://github.com/VdustR/g2d/actions/workflows/build.yml)
+[![ghcr](https://github.com/VdustR/g2d/actions/workflows/ghcr.yml/badge.svg)](https://github.com/VdustR/g2d/actions/workflows/ghcr.yml)
 
 Transform `.gitignore` into `.dockerignore`.
 
@@ -9,6 +13,10 @@ Transform `.gitignore` into `.dockerignore`.
 | `/`          | -               |
 | -            | `**/`           |
 
+## Download
+
+Check [releases](https://github.com/VdustR/g2d/releases).
+
 ## Usage
 
 `g2d` will detect the nearest `.gitignore` by default.
@@ -17,22 +25,51 @@ Transform `.gitignore` into `.dockerignore`.
 # std output
 g2d
 
-# write into .dockerignore
+# export to .dockerignore
 g2d -o .
 
 # if foo is a directory
-# .dockerignore would be export into foo/.dockerignore
+# .dockerignore would be exported to foo/.dockerignore
 g2d -o foo
 cat foo/.gitignore
 
 # if foo is a file
-# .dockerignore would be export into foo
+# .dockerignore would be exported to foo
 g2d -o foo
 cat foo
 
 # more
 g2d -h
 ```
+
+## Install with Deno
+
+```sh
+git clone git@github.com:VdustR/g2d.git
+deno install --importmap=import_map.json \
+  --unstable \
+  --allow-read \
+  --allow-write \
+  -n g2d \
+  bin.ts
+
+# uninstall
+rm $(which g2d)
+```
+
+## Deno Library
+
+```ts
+import g2b from "https://deno.land/x/g2d/g2d.ts";
+
+const gitignore = Deno.readTextFileSync(".gitignore");
+const dockerignore = g2b(gitignore);
+Deno.writeTextFileSync(".dockerignore", dockerignore);
+```
+
+## Container
+
+Check [g2d container](https://github.com/VdustR/g2d/pkgs/container/g2d).
 
 ## Dev
 
@@ -43,5 +80,17 @@ deno run --importmap=import_map.json --unstable --allow-read --allow-write bin.t
 ## Test
 
 ```sh
-deno test --importmap=import_map.json --unstable .
+./scripts/test-watch.sh
 ```
+
+## Tested Dev Env
+
+```
+deno 1.14.3 (release, x86_64-unknown-linux-gnu)
+v8 9.4.146.19
+typescript 4.4.2
+```
+
+## License
+
+MIT

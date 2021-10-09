@@ -4,7 +4,8 @@
     "denoland",
     "dockerignore",
     "importmap",
-    "olegtarasov"
+    "olegtarasov",
+    "podman"
   ],
   "deno.enable": true,
   "deno.importMap": "./import_map.json",
