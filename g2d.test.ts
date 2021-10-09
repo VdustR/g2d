@@ -2,27 +2,41 @@ import { assertEquals } from "std/testing/asserts.ts";
 import g2b from "/g2d.ts";
 
 Deno.test("comment", () => {
-  console.log('g2b("#foo")', g2b("#foo"));
   assertEquals(g2b("#foo"), "#foo");
+  assertEquals(g2b("#"), "#");
+  assertEquals(g2b("#\r"), "#\r");
+  assertEquals(g2b("#\n"), "#\n");
+  assertEquals(g2b("#\r\n"), "#\r\n");
 });
 
-Deno.test("not", () => {
+Deno.test("negative", () => {
   assertEquals(g2b("!foo"), "!**/foo");
+  assertEquals(g2b("!"), "!");
+  assertEquals(g2b("! "), "!**/ ");
+  assertEquals(g2b("!\n\r\n\r\n"), "!**/\n\r\n\r\n");
+  assertEquals(g2b("!\r\n\n\n\n"), "!**/\r\n\n\n\n");
 });
 
-Deno.test("not root", () => {
+Deno.test("negative root", () => {
   assertEquals(g2b("!/foo"), "!foo");
+  assertEquals(g2b("!/"), "!");
+  assertEquals(g2b("!/ "), "! ");
+  assertEquals(g2b("!/\n\r\n\r\n"), "!\n\r\n\r\n");
+  assertEquals(g2b("!/\r\n\n\n\n"), "!\r\n\n\n\n");
 });
 
-Deno.test("match", () => {
+Deno.test("positive", () => {
   assertEquals(g2b("foo"), "**/foo");
+  assertEquals(g2b(""), "");
+  assertEquals(g2b(" "), "**/ ");
+  assertEquals(g2b("\n\r\n\r\n"), "**/\n\r\n\r\n");
+  assertEquals(g2b("\r\n\n\n\n"), "**/\r\n\n\n\n");
 });
 
-Deno.test("match root", () => {
+Deno.test("positive root", () => {
   assertEquals(g2b("/foo"), "foo");
-});
-
-Deno.test("multiple line", () => {
-  assertEquals(g2b("/foo\r\n!bar"), "foo\r\n!**/bar");
-  assertEquals(g2b("/foo\n!bar"), "foo\n!**/bar");
+  assertEquals(g2b("/"), "");
+  assertEquals(g2b("/ "), " ");
+  assertEquals(g2b("/\n\r\n\r\n"), "\n\r\n\r\n");
+  assertEquals(g2b("/\r\n\n\n\n"), "\r\n\n\n\n");
 });
