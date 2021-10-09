@@ -3,7 +3,6 @@ on:
   push:
     tags:
       - v*.*.*
-      - v*.*.*-*
 
 env:
   REGISTRY: ghcr.io
