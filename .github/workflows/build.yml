@@ -23,7 +23,7 @@ jobs:
           echo "export default \"${GIT_TAG_NAME}\";" > version.ts
       - name: Build
         run: |
-          ./scripts/compile.sh
+          ./scripts/compile_all.sh
       - uses: edgarrc/action-7z@v1
         with:
           args: 7z a dist/aarch64-apple-darwin.7z ./dist/aarch64-apple-darwin/g2d
