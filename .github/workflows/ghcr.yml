@@ -15,5 +15,5 @@ jobs:
       - name: Build and publish a Docker image for ${{ github.repository }}
         uses: macbre/push-to-ghcr@v7
         with:
-          image_name: ${{ github.repository }}
+          image_name: vdustr/g2d
           github_token: ${{ secrets.GITHUB_TOKEN }}
