@@ -57,7 +57,7 @@ deno install \
   --allow-read \
   --allow-write \
   -n g2d \
-  https://deno.land/x/g2d@v1.0.1/bin.ts
+  https://deno.land/x/g2d/bin.ts
 
 # install from local repo
 git clone git@github.com:VdustR/g2d.git
