@@ -1,6 +1,6 @@
-import { resolve } from "std/path/mod.ts";
-import readGitignore from "/read_gitignore.ts";
-import cwd from "/cwd.ts";
+import { pathResolve } from "./deps.ts";
+import readGitignore from "./read_gitignore.ts";
+import cwd from "./cwd.ts";
 
 export default async function findGitIgnore(dir: string = cwd): Promise<
   | {
@@ -10,11 +10,11 @@ export default async function findGitIgnore(dir: string = cwd): Promise<
   | undefined
 > {
   try {
-    const path = resolve(dir, ".gitignore");
+    const path = pathResolve(dir, ".gitignore");
     const gitignore = await readGitignore(path);
     return gitignore;
   } catch (_e) {
     if (dir === "/") return undefined;
-    return findGitIgnore(resolve(dir, ".."));
+    return findGitIgnore(pathResolve(dir, ".."));
   }
 }

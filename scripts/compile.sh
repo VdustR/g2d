@@ -4,7 +4,6 @@ cd ..
 
 mkdir -p dist/$DENO_COMPILE_TARGET
 deno compile \
-  --importmap=import_map.json \
   --unstable \
   --allow-read \
   --allow-write \

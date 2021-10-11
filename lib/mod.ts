@@ -1,7 +1,7 @@
-import detectEol from "/detect_eol.ts";
+import { detectNewline } from "./deps.ts";
 
 export default function g2b(input: string): string {
-  const eol = detectEol(input);
+  const eol = detectNewline(input);
   return input
     .split(eol)
     .map((line) => {

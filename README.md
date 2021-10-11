@@ -51,8 +51,17 @@ g2d -h
 ## Install with Deno
 
 ```sh
+# install from remote
+deno install \
+  --unstable \
+  --allow-read \
+  --allow-write \
+  -n g2d \
+  https://deno.land/x/g2d@v1.0.1/bin.ts
+
+# install from local repo
 git clone git@github.com:VdustR/g2d.git
-deno install --importmap=import_map.json \
+deno install \
   --unstable \
   --allow-read \
   --allow-write \
@@ -66,7 +75,7 @@ rm $(which g2d)
 ## Deno Library
 
 ```ts
-import g2b from "https://deno.land/x/g2d/g2d.ts";
+import g2b from "https://deno.land/x/g2d/mod.ts";
 
 const gitignore = Deno.readTextFileSync(".gitignore");
 const dockerignore = g2b(gitignore);
@@ -77,10 +86,14 @@ Deno.writeTextFileSync(".dockerignore", dockerignore);
 
 Check [g2d container](https://github.com/VdustR/g2d/pkgs/container/g2d).
 
+```bash
+podman run --rm -it -v $(pwd):/repo g2d g2d /repo/.gitignore -o /repo
+```
+
 ## Dev
 
 ```sh
-deno run --importmap=import_map.json --unstable --allow-read --allow-write bin.ts
+deno run --unstable --allow-read --allow-write bin.ts
 ```
 
 ## Test

@@ -13,13 +13,6 @@ jobs:
       - uses: denoland/setup-deno@v1.1.0
         with:
           deno-version: v1.14.3
-      - uses: olegtarasov/get-tag@v2.1.1
-        id: tagName
-        with:
-          tagRegex: "v(.*)"
-      - name: Set version
-        run: |
-          echo "export default \"${GIT_TAG_NAME}\";" > version.ts
       - name: Build
         run: |
           ./scripts/compile_all.sh

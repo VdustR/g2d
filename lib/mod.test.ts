@@ -1,5 +1,5 @@
-import { assertEquals } from "std/testing/asserts.ts";
-import g2b from "/g2d.ts";
+import { assertEquals } from "../deps.ts";
+import g2b from "./mod.ts";
 
 Deno.test("comment", () => {
   assertEquals(g2b("#foo"), "#foo");
