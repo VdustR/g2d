@@ -1,1 +1,2 @@
-export { graceful as detectNewline } from "https://cdn.skypack.dev/pin/detect-newline@v3.1.0-RFthrCAllhDvWtDyI0zs/mode=imports/optimized/detect-newline.js";
+// @deno-types="https://cdn.jsdelivr.net/npm/detect-newline@3.1.0/index.d.ts"
+export { graceful as detectNewline } from "https://cdn.skypack.dev/detect-newline@3.1.0";
