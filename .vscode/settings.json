@@ -5,7 +5,8 @@
     "dockerignore",
     "importmap",
     "olegtarasov",
-    "podman"
+    "podman",
+    "vdustr"
   ],
   "deno.enable": true,
   "deno.lint": true,
