@@ -99,15 +99,15 @@ deno run --unstable --allow-read --allow-write bin.ts
 ## Test
 
 ```sh
-./scripts/test-watch.sh
+./scripts/test.sh
 ```
 
 ## Tested Dev Env
 
 ```
-deno 1.14.3 (release, x86_64-unknown-linux-gnu)
-v8 9.4.146.19
-typescript 4.4.2
+deno 1.19.1 (release, x86_64-unknown-linux-gnu)
+v8 9.9.115.7
+typescript 4.5.2
 ```
 
 ## License
